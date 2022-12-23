@@ -1,5 +1,4 @@
 export const canvas = document.querySelector('#canvas');
-const score = document.querySelector('#score');
 const ctx = canvas.getContext('2d');
 export const d = 3;
 const tileWidth = canvas.width / d;
@@ -7,8 +6,7 @@ const tileHeight = canvas.height / d;
 const tileColor = '#ffcece';
 const canvasColor = '#eee';
 canvas.style.backgroundColor = canvasColor;
-let steps = 0;
-let stop = false;
+
 class Tile
 {
     constructor(i, j, n)
@@ -56,15 +54,7 @@ export class GameView
 
 export function clickToTail(x, y)
 {
-    if(stop) return [0,0]
     const j = Math.floor(x / tileWidth);
     const i = Math.floor(y / tileHeight);
-    steps++;
-    score.innerHTML = steps;
     return [i,j]
-}
-export function won()
-{
-    stop = true
-    score.innerHTML = "You won, you steps = " + steps;
 }
